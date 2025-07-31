@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Click What You Feel 💌</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Gloria+Hallelujah&family=Scribble&family=Love+Ya+Like+A+Sister&display=swap');
@@ -17,6 +17,7 @@
       flex-direction: column;
       height: 100vh;
     }
+
     .header {
       text-align: center;
       background-color: rgba(0, 0, 0, 0.5);
@@ -26,11 +27,13 @@
       letter-spacing: 1px;
       font-family: 'Montserrat', sans-serif;
     }
+
     .container {
       display: flex;
       flex: 1;
       overflow: hidden;
     }
+
     .sidebar {
       width: 30%;
       background-color: rgba(0, 0, 0, 0.6);
@@ -39,6 +42,7 @@
       flex-direction: column;
       gap: 15px;
     }
+
     .sidebar button {
       background: linear-gradient(135deg, #ff758c, #ff7eb3);
       border: none;
@@ -50,10 +54,12 @@
       transition: background 0.3s, transform 0.2s;
       font-family: 'Love Ya Like A Sister', cursive;
     }
+
     .sidebar button:hover {
       background: linear-gradient(135deg, #ff4e6b, #ff6ca8);
       transform: scale(1.03);
     }
+
     .message-box {
       flex: 1;
       background-color: rgba(0, 0, 0, 0.4);
@@ -66,14 +72,19 @@
       text-align: center;
       transition: opacity 0.3s ease-in-out;
     }
+
     .quiz {
       margin-bottom: 20px;
     }
+
     .quiz p {
-      font-size: 1.2em;
+      font-size: 1.3em;
       margin-bottom: 30px;
       font-family: 'Scribble', cursive;
+      font-weight: bold;
+      color: #ddd;
     }
+
     .quiz label {
       display: block;
       margin-bottom: 15px;
@@ -81,10 +92,12 @@
       font-size: 1.1em;
       cursor: pointer;
     }
+
     .quiz input[type="checkbox"] {
       margin-right: 10px;
       transform: scale(1.2);
     }
+
     .correct {
       font-family: 'Gloria Hallelujah', cursive;
       font-size: 1.5em;
@@ -92,17 +105,17 @@
   </style>
 </head>
 <body>
-  <div class="header">Click What You Feel 💌</div>
+  <div class="header">For Every Time You Feel Something...</div>
   <div class="container">
     <div class="sidebar">
-      <button onclick="startQuiz('off')">🌧 Feeling Off Today</button>
-      <button onclick="startQuiz('thinking')">💭 Thinking of You</button>
-      <button onclick="startQuiz('tired')">💤 Can’t Find the Energy</button>
-      <button onclick="startQuiz('wish')">💌 Wish You Were Here</button>
-      <button onclick="startQuiz('light')">💡 Need a Little Light</button>
-      <button onclick="startQuiz('connect')">📶 Craving Connection</button>
-      <button onclick="startQuiz('mind')">🧠 Mind’s All Over</button>
-      <button onclick="startQuiz('lost')">🪐 Lost in My Head</button>
+      <button onclick="startQuiz('off')">Feeling Off Today</button>
+      <button onclick="startQuiz('thinking')">Thinking of You</button>
+      <button onclick="startQuiz('tired')">Can’t Find the Energy</button>
+      <button onclick="startQuiz('wish')">Wish I Was There</button>
+      <button onclick="startQuiz('light')">Need a Little Light</button>
+      <button onclick="startQuiz('connect')">Craving Connection</button>
+      <button onclick="startQuiz('mind')">Mind’s All Over</button>
+      <button onclick="startQuiz('lost')">Lost in My Head</button>
     </div>
     <div class="message-box" id="messageBox">
       Click an emotion to feel seen and understood 💖
@@ -120,12 +133,16 @@
           "That it feels like home, always."
         ],
         answer: 2,
-
         message: "<div class='correct'>Hey love, I know days like this can feel heavy. I wish I could wrap you in my arms and just hold you until it’s all a little lighter. Your glasses slipping down your nose while you sigh? I'd fix them, then kiss your forehead softly. You're never alone, even when I’m not there.</div>"
       },
       thinking: {
         question: "When you think of me, what do you picture?",
-        options: ["That silly debate we had during our first trip.", "Me being overly dramatic about something small.", "Us walking hand-in-hand after our dates.", "You smiling softly after one of our video calls."],
+        options: [
+          "That silly debate we had during our first trip.",
+          "Me being overly dramatic about something small.",
+          "Us walking hand-in-hand after our dates.",
+          "You smiling softly after one of our video calls."
+        ],
         answer: 2,
         message: "<div class='correct'>I think about you in the most random moments — your smile, your laugh, your lips I keep craving. You're always in the background of my thoughts like a soft song that never stops playing. I wish I could tell you every little time I miss you… which is honestly, always.</div>"
       },
@@ -149,7 +166,6 @@
           "The pause before your first kiss — when time froze."
         ],
         answer: 3,
-
         message: "<div class='correct'>I imagine you next to me all the time. Sitting close, maybe stealing glances through those glasses of yours. I’d tuck a strand of hair behind your ear and kiss you like I’ve waited forever. Being apart sucks — but I hold onto us. One day, this distance won’t exist.</div>"
       },
       light: {
@@ -161,7 +177,6 @@
           "Just being near you, no words, no rush, just us."
         ],
         answer: 2,
-
         message: "<div class='correct'>You are my light. But when yours dims, I wish I could flick it back on with a kiss or a dumb joke or just showing up. Your lips — God, I think about them too much. Let’s recharge soon, even if it’s just a call. I need you bright again.</div>"
       },
       connect: {
@@ -173,7 +188,6 @@
           "Because you’re art, and I’m addicted."
         ],
         answer: 2,
-
         message: "<div class='correct'>Even with the distance between us, I feel you. Every message, every pic— it keeps me going. I just want to hear about your day and listen to you talk, even if it’s about nothing. I’d give anything to kiss you mid-sentence. I miss that kind of closeness. I miss you.</div>"
       },
       mind: {
@@ -189,7 +203,12 @@
       },
       lost: {
         question: "When you’re lost in your head, where do you wander?",
-        options: ["To our late night conversations.", "Back to our favorite park bench.", "Into the memory of your hand in mine.", "To me — always to me."],
+        options: [
+          "To our late night conversations.",
+          "Back to our favorite park bench.",
+          "Into the memory of your hand in mine.",
+          "To me — always to me."
+        ],
         answer: 3,
         message: "<div class='correct'>When I get lost in my own thoughts, you're my north star. Just the image of your face — your lips, those glasses, that curious little look you give — brings me back. I don’t need a map. I just need you. Come pull me back into us, whenever you feel it too.</div>"
       }
