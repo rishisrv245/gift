@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Click What You Feel 💌</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Gloria+Hallelujah&family=Scribble&display=swap');
 
     body {
       margin: 0;
@@ -70,20 +70,35 @@
     }
     .quiz p {
       font-size: 1.2em;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      font-family: 'Scribble', cursive;
+    }
+    .quiz .option-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
     }
     .quiz button {
-      margin: 5px;
-      padding: 10px 15px;
-      background-color: rgba(255, 255, 255, 0.2);
+      padding: 12px 20px;
       color: white;
-      border: 1px solid white;
-      border-radius: 6px;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Scribble', cursive;
+      font-size: 1em;
+      transition: transform 0.2s;
     }
     .quiz button:hover {
-      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+    .quiz .opt1 { background-color: #ff6b6b; }
+    .quiz .opt2 { background-color: #6bafff; }
+    .quiz .opt3 { background-color: #6bffb7; }
+    .quiz .opt4 { background-color: #e26bff; }
+    .correct {
+      font-family: 'Gloria Hallelujah', cursive;
+      font-size: 1.5em;
     }
   </style>
 </head>
@@ -111,49 +126,49 @@
         question: "What helps soothe a stormy heart?",
         options: ["Blaming yourself", "Holding it in", "Talking to someone you love", "Ignoring it"],
         answer: 2,
-        message: "You chose love. And that’s always the answer. I’m here, always. 💗"
+        message: "<div class='correct'>You chose love. And that’s always the answer. I’m here, always. 💗</div>"
       },
       thinking: {
         question: "When you think of me, what should you remember most?",
         options: ["How annoying I can be", "Our inside jokes", "Deadlines", "That time we fought"],
         answer: 1,
-        message: "Yes! It’s always the little silly moments that matter. 💭"
+        message: "<div class='correct'>Yes! It’s always the little silly moments that matter. 💭</div>"
       },
       tired: {
         question: "What’s the best recharge?",
         options: ["Overthinking everything", "Scrolling endlessly", "A nap and a hug from me", "Caffeine overdose"],
         answer: 2,
-        message: "Nap + me = perfect combo. You deserve the rest. 😴"
+        message: "<div class='correct'>Nap + me = perfect combo. You deserve the rest. 😴</div>"
       },
       wish: {
         question: "What would I do if I were there right now?",
         options: ["Annoy you", "Hold your hand", "Talk too much", "Leave"] ,
         answer: 1,
-        message: "You know me too well. Holding your hand is top priority. 💌"
+        message: "<div class='correct'>You know me too well. Holding your hand is top priority. 💌</div>"
       },
       light: {
         question: "What brings the light back?",
         options: ["Netflix only", "Avoiding everyone", "Your smile + my love", "Staying up all night"],
         answer: 2,
-        message: "Always your smile and my never-ending affection. 💡✨"
+        message: "<div class='correct'>Always your smile and my never-ending affection. 💡✨</div>"
       },
       connect: {
         question: "When do we feel closest?",
         options: ["When we argue", "When we just listen", "When we multitask", "When we text all day"],
         answer: 1,
-        message: "Listening builds bridges. I hear you even when you whisper. 📶"
+        message: "<div class='correct'>Listening builds bridges. I hear you even when you whisper. 📶</div>"
       },
       mind: {
         question: "How to calm a racing mind?",
         options: ["Let it spin", "Let it speak", "Shut it down", "Ignore it"],
         answer: 1,
-        message: "Let it speak. I’m always here to hear it all — no judgment. 🧠"
+        message: "<div class='correct'>Let it speak. I’m always here to hear it all — no judgment. 🧠</div>"
       },
       lost: {
         question: "Where do you go when you get lost in your head?",
         options: ["Nowhere", "To the past", "To the stars", "To me"],
         answer: 3,
-        message: "Yes. Come to me, always. I’m your home base. 🪐💞"
+        message: "<div class='correct'>Yes. Come to me, always. I’m your home base. 🪐💞</div>"
       }
     };
 
@@ -163,7 +178,14 @@
       container.innerHTML = `
         <div class="quiz">
           <p>${quiz.question}</p>
-          ${quiz.options.map((opt, idx) => `<button onclick="checkAnswer('${key}', ${idx})">${opt}</button>`).join('')}
+          <div class="option-row">
+            <button class="opt1" onclick="checkAnswer('${key}', 0)">${quiz.options[0]}</button>
+            <button class="opt2" onclick="checkAnswer('${key}', 1)">${quiz.options[1]}</button>
+          </div>
+          <div class="option-row">
+            <button class="opt3" onclick="checkAnswer('${key}', 2)">${quiz.options[2]}</button>
+            <button class="opt4" onclick="checkAnswer('${key}', 3)">${quiz.options[3]}</button>
+          </div>
         </div>
       `;
     }
