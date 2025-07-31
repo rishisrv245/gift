@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Click What You Feel 💌</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Playfair Display', serif;
       background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac') no-repeat center center fixed;
       background-size: cover;
       color: white;
@@ -19,8 +21,9 @@
       text-align: center;
       background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
-      font-size: 2em;
+      font-size: 2.2em;
       font-weight: bold;
+      letter-spacing: 1px;
     }
     .container {
       display: flex;
@@ -36,27 +39,51 @@
       gap: 15px;
     }
     .sidebar button {
-      background-color: #ff4d6d;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
       border: none;
       color: white;
-      padding: 15px;
+      padding: 12px;
       font-size: 1em;
       cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.3s;
+      border-radius: 10px;
+      transition: background 0.3s, transform 0.2s;
+      font-family: 'Playfair Display', serif;
     }
     .sidebar button:hover {
-      background-color: #ff1c49;
+      background: linear-gradient(135deg, #ff4e6b, #ff6ca8);
+      transform: scale(1.03);
     }
     .message-box {
       flex: 1;
       background-color: rgba(0, 0, 0, 0.4);
       padding: 40px;
-      font-size: 1.5em;
+      font-size: 1.4em;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .quiz {
+      margin-bottom: 20px;
+    }
+    .quiz p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .quiz button {
+      margin: 5px;
+      padding: 10px 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+    }
+    .quiz button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
     }
   </style>
 </head>
@@ -64,28 +91,91 @@
   <div class="header">Click What You Feel 💌</div>
   <div class="container">
     <div class="sidebar">
-      <button onclick="showMessage('sad')">🥺 I’m Feeling Sad</button>
-      <button onclick="showMessage('miss')">💭 I Miss You</button>
-      <button onclick="showMessage('smile')">😊 Need a Smile?</button>
-      <button onclick="showMessage('love')">❤️ Feeling Romantic</button>
-      <button onclick="showMessage('lonely')">🌙 Feeling Lonely</button>
+      <button onclick="startQuiz('off')">🌧 Feeling Off Today</button>
+      <button onclick="startQuiz('thinking')">💭 Thinking of You</button>
+      <button onclick="startQuiz('tired')">💤 Can’t Find the Energy</button>
+      <button onclick="startQuiz('wish')">💌 Wish You Were Here</button>
+      <button onclick="startQuiz('light')">💡 Need a Little Light</button>
+      <button onclick="startQuiz('connect')">📶 Craving Connection</button>
+      <button onclick="startQuiz('mind')">🧠 Mind’s All Over</button>
+      <button onclick="startQuiz('lost')">🪐 Lost in My Head</button>
     </div>
     <div class="message-box" id="messageBox">
-      Click a button to feel a little closer 💖
+      Click an emotion to feel seen and understood 💖
     </div>
   </div>
 
   <script>
-    const messages = {
-      sad: "My love, it's okay to feel sad. Just know you're not alone. I’m always here, even in silence. 💗",
-      miss: "I miss you more than words can say. Look at the moon tonight — we’re under the same sky. 🌙",
-      smile: "Here's your virtual hug and a goofy smile 😄 because you deserve joy every second.",
-      love: "My heart is full of you. You're my always and forever. ❤️",
-      lonely: "Even when you feel alone, I’m right there, wrapped around your thoughts like a warm blanket. 🧸"
+    const quizzes = {
+      off: {
+        question: "What helps soothe a stormy heart?",
+        options: ["Blaming yourself", "Holding it in", "Talking to someone you love", "Ignoring it"],
+        answer: 2,
+        message: "You chose love. And that’s always the answer. I’m here, always. 💗"
+      },
+      thinking: {
+        question: "When you think of me, what should you remember most?",
+        options: ["How annoying I can be", "Our inside jokes", "Deadlines", "That time we fought"],
+        answer: 1,
+        message: "Yes! It’s always the little silly moments that matter. 💭"
+      },
+      tired: {
+        question: "What’s the best recharge?",
+        options: ["Overthinking everything", "Scrolling endlessly", "A nap and a hug from me", "Caffeine overdose"],
+        answer: 2,
+        message: "Nap + me = perfect combo. You deserve the rest. 😴"
+      },
+      wish: {
+        question: "What would I do if I were there right now?",
+        options: ["Annoy you", "Hold your hand", "Talk too much", "Leave"] ,
+        answer: 1,
+        message: "You know me too well. Holding your hand is top priority. 💌"
+      },
+      light: {
+        question: "What brings the light back?",
+        options: ["Netflix only", "Avoiding everyone", "Your smile + my love", "Staying up all night"],
+        answer: 2,
+        message: "Always your smile and my never-ending affection. 💡✨"
+      },
+      connect: {
+        question: "When do we feel closest?",
+        options: ["When we argue", "When we just listen", "When we multitask", "When we text all day"],
+        answer: 1,
+        message: "Listening builds bridges. I hear you even when you whisper. 📶"
+      },
+      mind: {
+        question: "How to calm a racing mind?",
+        options: ["Let it spin", "Let it speak", "Shut it down", "Ignore it"],
+        answer: 1,
+        message: "Let it speak. I’m always here to hear it all — no judgment. 🧠"
+      },
+      lost: {
+        question: "Where do you go when you get lost in your head?",
+        options: ["Nowhere", "To the past", "To the stars", "To me"],
+        answer: 3,
+        message: "Yes. Come to me, always. I’m your home base. 🪐💞"
+      }
     };
 
-    function showMessage(type) {
-      document.getElementById('messageBox').innerText = messages[type];
+    function startQuiz(key) {
+      const quiz = quizzes[key];
+      const container = document.getElementById('messageBox');
+      container.innerHTML = `
+        <div class="quiz">
+          <p>${quiz.question}</p>
+          ${quiz.options.map((opt, idx) => `<button onclick="checkAnswer('${key}', ${idx})">${opt}</button>`).join('')}
+        </div>
+      `;
+    }
+
+    function checkAnswer(key, selected) {
+      const quiz = quizzes[key];
+      const container = document.getElementById('messageBox');
+      if (selected === quiz.answer) {
+        container.innerHTML = quiz.message;
+      } else {
+        container.innerHTML = `<p>Oops, try again! Think with your heart 💖</p>`;
+      }
     }
   </script>
 </body>
