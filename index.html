@@ -74,29 +74,17 @@
       margin-bottom: 30px;
       font-family: 'Scribble', cursive;
     }
-    .quiz .option-row {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 30px;
-    }
-    .quiz button {
-      padding: 14px 24px;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+    .quiz label {
+      display: block;
+      margin-bottom: 15px;
       font-family: 'Scribble', cursive;
       font-size: 1.1em;
-      transition: transform 0.2s;
+      cursor: pointer;
     }
-    .quiz button:hover {
-      transform: scale(1.05);
+    .quiz input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
     }
-    .quiz .opt1 { background-color: #ff6b6b; }
-    .quiz .opt2 { background-color: #6bafff; }
-    .quiz .opt3 { background-color: #6bffb7; }
-    .quiz .opt4 { background-color: #e26bff; }
     .correct {
       font-family: 'Gloria Hallelujah', cursive;
       font-size: 1.5em;
@@ -124,52 +112,86 @@
   <script>
     const quizzes = {
       off: {
-        question: "What helps soothe a stormy heart?",
-        options: ["Blaming yourself", "Holding it in", "Talking to someone you love", "Ignoring it"],
+        question: "What do I love most about your smile?",
+        options: [
+          "That it lights up even my worst moods.",
+          "That it’s a secret only I truly understand.",
+          "That it means you're happy — and I might be the reason.",
+          "That it feels like home, always."
+        ],
         answer: 2,
-        message: "<div class='correct'>You chose love. And that’s always the answer. I’m here, always. 💗</div>"
+
+        message: "<div class='correct'>Hey love, I know days like this can feel heavy. I wish I could wrap you in my arms and just hold you until it’s all a little lighter. Your glasses slipping down your nose while you sigh? I'd fix them, then kiss your forehead softly. You're never alone, even when I’m not there.</div>"
       },
       thinking: {
-        question: "When you think of me, what should you remember most?",
-        options: ["How annoying I can be", "Our inside jokes", "Deadlines", "That time we fought"],
-        answer: 1,
-        message: "<div class='correct'>Yes! It’s always the little silly moments that matter. 💭</div>"
+        question: "When you think of me, what do you picture?",
+        options: ["That silly debate we had during our first trip.", "Me being overly dramatic about something small.", "Us walking hand-in-hand after our dates.", "You smiling softly after one of our video calls."],
+        answer: 2,
+        message: "<div class='correct'>I think about you in the most random moments — your smile, your laugh, your lips I keep craving. You're always in the background of my thoughts like a soft song that never stops playing. I wish I could tell you every little time I miss you… which is honestly, always.</div>"
       },
       tired: {
-        question: "What’s the best recharge?",
-        options: ["Overthinking everything", "Scrolling endlessly", "A nap and a hug from me", "Caffeine overdose"],
+        question: "When you're tired, what do I wish I could do?",
+        options: [
+          "Wrap you in my arms and hum until you fall asleep.",
+          "Slip in quietly, hold your hand, and stay still.",
+          "Kiss your forehead and whisper, ‘You’ve done enough, love.’",
+          "Take the day from your shoulders and carry it for you."
+        ],
         answer: 2,
-        message: "<div class='correct'>Nap + me = perfect combo. You deserve the rest. 😴</div>"
+        message: "<div class='correct'>If I could, I’d press pause on the world just to let you rest. I’d curl up beside you, gently hold your hand, maybe kiss your cheek... or your lips, again and again. You don’t have to do it all, my love. Let yourself breathe. You’re enough — always have been.</div>"
       },
       wish: {
-        question: "What would I do if I were there right now?",
-        options: ["Annoy you", "Hold your hand", "Talk too much", "Leave"] ,
-        answer: 1,
-        message: "<div class='correct'>You know me too well. Holding your hand is top priority. 💌</div>"
+        question: "What’s the one moment I always replay in my head?",
+        options: [
+          "The way your eyes looked behind your glasses that night.",
+          "Our first long call where time just disappeared.",
+          "That soft laugh you tried to hide but couldn’t.",
+          "The pause before your first kiss — when time froze."
+        ],
+        answer: 3,
+
+        message: "<div class='correct'>I imagine you next to me all the time. Sitting close, maybe stealing glances through those glasses of yours. I’d tuck a strand of hair behind your ear and kiss you like I’ve waited forever. Being apart sucks — but I hold onto us. One day, this distance won’t exist.</div>"
       },
       light: {
-        question: "What brings the light back?",
-        options: ["Netflix only", "Avoiding everyone", "Your smile + my love", "Staying up all night"],
+        question: "What do I crave most when I think of you?",
+        options: [
+          "Your hand tucked quietly into mine, like it belongs there.",
+          "That first look you give me when you see me again.",
+          "The feel of your lips — like coming home, every time.",
+          "Just being near you, no words, no rush, just us."
+        ],
         answer: 2,
-        message: "<div class='correct'>Always your smile and my never-ending affection. 💡✨</div>"
+
+        message: "<div class='correct'>You are my light. But when yours dims, I wish I could flick it back on with a kiss or a dumb joke or just showing up. Your lips — God, I think about them too much. Let’s recharge soon, even if it’s just a call. I need you bright again.</div>"
       },
       connect: {
-        question: "When do we feel closest?",
-        options: ["When we argue", "When we just listen", "When we multitask", "When we text all day"],
-        answer: 1,
-        message: "<div class='correct'>Listening builds bridges. I hear you even when you whisper. 📶</div>"
+        question: "What’s the real reason I stare at your pictures so much?",
+        options: [
+          "To memorize you more than memory allows.",
+          "Because I miss what I haven’t yet had enough of.",
+          "To feel close when I can’t touch.",
+          "Because you’re art, and I’m addicted."
+        ],
+        answer: 2,
+
+        message: "<div class='correct'>Even with the distance between us, I feel you. Every message, every pic— it keeps me going. I just want to hear about your day and listen to you talk, even if it’s about nothing. I’d give anything to kiss you mid-sentence. I miss that kind of closeness. I miss you.</div>"
       },
       mind: {
-        question: "How to calm a racing mind?",
-        options: ["Let it spin", "Let it speak", "Shut it down", "Ignore it"],
-        answer: 1,
-        message: "<div class='correct'>Let it speak. I’m always here to hear it all — no judgment. 🧠</div>"
+        question: "When do I miss you the hardest?",
+        options: [
+          "When I wake up and you're not beside me.",
+          "When I laugh and you're not the reason.",
+          "When I see couples walking hand-in-hand.",
+          "When silence feels heavier than it should."
+        ],
+        answer: 0,
+        message: "<div class='correct'>When your thoughts feel tangled, I wish I could sit quietly beside you and help untie the knots one by one. You don’t have to hold it together around me. Just exist — even in your messiest state. I’ll still want to hold you, kiss you, love you just the same.</div>"
       },
       lost: {
-        question: "Where do you go when you get lost in your head?",
-        options: ["Nowhere", "To the past", "To the stars", "To me"],
+        question: "When you’re lost in your head, where do you wander?",
+        options: ["To our late night conversations.", "Back to our favorite park bench.", "Into the memory of your hand in mine.", "To me — always to me."],
         answer: 3,
-        message: "<div class='correct'>Yes. Come to me, always. I’m your home base. 🪐💞</div>"
+        message: "<div class='correct'>When I get lost in my own thoughts, you're my north star. Just the image of your face — your lips, those glasses, that curious little look you give — brings me back. I don’t need a map. I just need you. Come pull me back into us, whenever you feel it too.</div>"
       }
     };
 
@@ -179,14 +201,7 @@
       container.innerHTML = `
         <div class="quiz">
           <p>${quiz.question}</p>
-          <div class="option-row">
-            <button class="opt1" onclick="checkAnswer('${key}', 0)">${quiz.options[0]}</button>
-            <button class="opt2" onclick="checkAnswer('${key}', 1)">${quiz.options[1]}</button>
-          </div>
-          <div class="option-row">
-            <button class="opt3" onclick="checkAnswer('${key}', 2)">${quiz.options[2]}</button>
-            <button class="opt4" onclick="checkAnswer('${key}', 3)">${quiz.options[3]}</button>
-          </div>
+          ${quiz.options.map((opt, idx) => `<label><input type="checkbox" onclick="checkAnswer('${key}', ${idx})">${opt}</label>`).join('')}
         </div>
       `;
     }
@@ -197,7 +212,7 @@
       if (selected === quiz.answer) {
         container.innerHTML = quiz.message;
       } else {
-        container.innerHTML = `<p>Oops, try again! Think with your heart 💖</p>`;
+        container.innerHTML = `<p>Babyyyy! Think with your heart💖</p>`;
       }
     }
   </script>
